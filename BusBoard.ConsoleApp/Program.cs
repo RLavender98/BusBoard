@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using BusBoard;
 using System.Text;
 using System.Threading.Tasks;
+using BusBoard.Api;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
