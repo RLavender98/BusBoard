@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Authenticators;
-
-namespace BusBoard.Api
+﻿namespace BusBoard.Api
 {
     public class Bus
     {
-        public int lineId;
-        public string destinationName;
-        public int timeToStation;
+        public int LineId{ get; set; }
+        public string DestinationName{ get; set; }
+        public int TimeToStation{ get; set; }
     }
 }

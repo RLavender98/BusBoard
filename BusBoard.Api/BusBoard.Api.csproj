@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus.cs" />
+    <Compile Include="BusGetter.cs" />
     <Compile Include="BusStop.cs" />
+    <Compile Include="CoordinateGetter.cs" />
     <Compile Include="Postcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

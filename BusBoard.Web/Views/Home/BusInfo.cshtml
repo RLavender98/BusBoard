@@ -11,10 +11,10 @@
     <p>The nearest bus stops and the next buses are: </p>
     @foreach (var s in Model.NearestStops)
     {
-        <text>Bus Stop: @s.commonName<br/></text>
+        <text>Bus Stop: @s.CommonName<br/></text>
         foreach (var bus in s.ArrivingBuses)
         {
-            <text>@bus.lineId, @bus.destinationName, @bus.timeToStation<br/></text>
+            <text>@bus.LineId, @bus.DestinationName, @bus.TimeToStation<br/></text>
         } 
     }
     
