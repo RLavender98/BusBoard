@@ -1,4 +1,5 @@
-﻿@model BusBoard.Web.ViewModels.BusInfo
+﻿@using BusBoard.Api
+@model BusBoard.Web.ViewModels.BusInfo
 @{
   ViewBag.Title = "Bus Information";
 }
@@ -7,4 +8,15 @@
 
 <div class="row">
     <p>You entered postcode @Model.PostCode</p>
+    <p>The nearest bus stops and the next buses are: </p>
+    @foreach (var s in Model.NearestStops)
+    {
+        <text>Bus Stop: @s.commonName<br/></text>
+        foreach (var bus in s.ArrivingBuses)
+        {
+            <text>@bus.lineId, @bus.destinationName, @bus.timeToStation<br/></text>
+        } 
+    }
+    
+    
 </div>

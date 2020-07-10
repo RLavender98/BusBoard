@@ -28,6 +28,10 @@ namespace BusBoard.ConsoleApp
       {
         Console.WriteLine(busStop.commonName);
         busStop.GetBuses();
+        foreach (var bus in busStop.ArrivingBuses)
+        {
+          Console.WriteLine($"{bus.lineId}, {bus.destinationName}, {bus.timeToStation}");
+        }
       }
     }
   }

@@ -12,6 +12,7 @@ namespace BusBoard.Api
     {
         public string naptanId;
         public string commonName;
+        public List<Bus> ArrivingBuses;
 
         public void GetBuses()
         {
@@ -24,10 +25,7 @@ namespace BusBoard.Api
             string responseBuses = response.Content;
             var infoBus = JsonConvert.DeserializeObject<List<Bus>>(responseBuses);
 
-            foreach (var bus in infoBus.Take(5))
-            {
-                Console.WriteLine($"{bus.lineId}, {bus.destinationName}, {bus.timeToStation}");
-            }
+            ArrivingBuses = infoBus.GetRange(0, 5);
         }
 
     }
