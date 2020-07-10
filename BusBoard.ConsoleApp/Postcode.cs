@@ -21,10 +21,9 @@ namespace BusBoard.ConsoleApp
         public Result Result;
         public string Postcode;
 
-        public GetsCoordinates()
+        public GetsCoordinates(string postcode)
         {
-            Console.WriteLine("Please enter your postcode:");
-            Postcode = Console.ReadLine();
+            Postcode = postcode;
             
             var client = new RestClient("http://api.postcodes.io/");
             var request = new RestRequest($"postcodes/{Postcode}", DataFormat.Json);

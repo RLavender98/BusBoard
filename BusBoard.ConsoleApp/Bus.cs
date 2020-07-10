@@ -12,7 +12,5 @@ namespace BusBoard.ConsoleApp
         public int lineId;
         public string destinationName;
         public int timeToStation;
-
-        
     }
 }

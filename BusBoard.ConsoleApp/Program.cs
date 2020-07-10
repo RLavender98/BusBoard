@@ -16,12 +16,12 @@ namespace BusBoard.ConsoleApp
     static void Main(string[] args)
     {
       ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-      var postcode = new GetsCoordinates();
-
-      //var busStop = new BusStop();
-      //busStop.GetBuses();
-      List<BusStop> BusStops = postcode.getBusStops(postcode.Result);
+      
+      Console.WriteLine("Please enter your postcode:");
+      string postcode = Console.ReadLine();
+      var postcodeObject = new GetsCoordinates(postcode);
+      
+      List<BusStop> BusStops = postcodeObject.getBusStops(postcodeObject.Result);
       foreach (var busStop in BusStops.Take(2))
       {
         Console.WriteLine(busStop.commonName);
