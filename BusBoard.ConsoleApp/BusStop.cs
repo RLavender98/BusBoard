@@ -7,9 +7,11 @@ using RestSharp.Authenticators;
 
 namespace BusBoard.ConsoleApp
 {
+    
     public class BusStop
     {
         public string naptanId;
+        public string commonName;
 
         public void GetBuses()
         {

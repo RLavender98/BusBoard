@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace BusBoard.ConsoleApp
 {
@@ -32,7 +34,7 @@ namespace BusBoard.ConsoleApp
             Result = info.result;
         }
 
-        public list<BusStop> getBusStops(Result coordinate)
+        public List<BusStop> getBusStops(Result coordinate)
         {
             var client = new RestClient("https://api.tfl.gov.uk/");
             client.Authenticator =
@@ -42,8 +44,13 @@ namespace BusBoard.ConsoleApp
             
             var response = client.Get(request);
             string responseBusStops = response.Content;
-            var infoBusStops = JsonConvert.DeserializeObject<List<BusStop>>(responseBusStops);
-            return infoBusStops;
+            var infoBusStops = JsonConvert.DeserializeObject<StopPoints>(responseBusStops);
+            return infoBusStops.stopPoints;
+        }
+        
+        public class StopPoints
+        {
+            public List<BusStop> stopPoints;
         }
     }
 }
