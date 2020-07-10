@@ -23,6 +23,7 @@ namespace BusBoard.ConsoleApp
       
       //var busStop = new BusStop();
       //busStop.GetBuses();
+      list<BusStop> BusStops = postcode.getBusStops(postcode.Result);
     }
   }
 }

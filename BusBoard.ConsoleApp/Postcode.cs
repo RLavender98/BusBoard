@@ -30,7 +30,20 @@ namespace BusBoard.ConsoleApp
             string responsePostcode = response.Content;
             var info = JsonConvert.DeserializeObject<WeirdResult>(responsePostcode);
             Result = info.result;
-            // infoPostcode.result.longitude;
+        }
+
+        public list<BusStop> getBusStops(Result coordinate)
+        {
+            var client = new RestClient("https://api.tfl.gov.uk/");
+            client.Authenticator =
+                new SimpleAuthenticator("app_id", "aa8ba038", "app_key", "bd6097d64168d6f16399d1e87c2847dc");
+
+            var request = new RestRequest($"StopPoint?stopTypes=NaptanPublicBusCoachTram&modes=bus&lat={coordinate.latitude}&lon={coordinate.longitude}", DataFormat.Json);
+            
+            var response = client.Get(request);
+            string responseBusStops = response.Content;
+            var infoBusStops = JsonConvert.DeserializeObject<List<BusStop>>(responseBusStops);
+            return infoBusStops;
         }
     }
 }

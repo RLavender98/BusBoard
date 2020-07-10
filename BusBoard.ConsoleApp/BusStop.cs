@@ -9,14 +9,15 @@ namespace BusBoard.ConsoleApp
 {
     public class BusStop
     {
-        public string BusStopId;
+        public string naptanId;
+
         public void GetBuses()
         {
             var client = new RestClient("https://api.tfl.gov.uk/");
             client.Authenticator =
                 new SimpleAuthenticator("app_id", "aa8ba038", "app_key", "bd6097d64168d6f16399d1e87c2847dc");
 
-            var request = new RestRequest($"StopPoint/{BusStopId}/Arrivals", DataFormat.Json);
+            var request = new RestRequest($"StopPoint/{naptanId}/Arrivals", DataFormat.Json);
             var response = client.Get(request);
             string responseBuses = response.Content;
             var infoBus = JsonConvert.DeserializeObject<List<Bus>>(responseBuses);
@@ -27,10 +28,5 @@ namespace BusBoard.ConsoleApp
             }
         }
 
-        public BusStop()
-        {
-            Console.WriteLine("Please enter your bus stop id:");
-            BusStopId = Console.ReadLine();
-        }
     }
 }
